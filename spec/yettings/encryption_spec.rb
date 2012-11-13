@@ -22,7 +22,8 @@ describe Yettings::Encryption do
     it "encrypts the string in binary" do
       str = "This is a private string"
       Yettings.encrypt_string(str).equals_without_encryption(str).should be false
-      Yettings.encrypt_string(str).equals_with_encryption(str).should be true
+      enc = Yettings.encrypt_string(str)
+      Yettings.decrypt_string(enc).should eq str
     end
   end
 
